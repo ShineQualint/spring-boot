@@ -18,13 +18,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("api/v1/demo")
 public class DemoController {
 
-  private List<Integer> database = new ArrayList<>();
+  public List<Integer> database = new ArrayList<>();
 
   public DemoController() {
-    this.database.add(1);
-    this.database.add(2);
-    this.database.add(2);
-    this.database.add(3);
+//    this.database.add(1);
+//    this.database.add(2);
+//    this.database.add(2);
+//    this.database.add(3);
   }
 
   @Autowired private DemoService service;
@@ -48,7 +48,7 @@ public class DemoController {
   }
 
   @DeleteMapping("/{id}")
-  public List<Integer> delHello(@PathVariable int id) {
+  public List<Integer> delValue(@PathVariable int id) {
     database.remove(id);
     return database;
   }
