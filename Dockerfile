@@ -1,5 +1,11 @@
-# FROM openjdk:17
+FROM maven:3.8.3-openjdk-17 AS build
+ARG version
+COPY src /home/app/src
+COPY pom.xml /home/app
+RUN mvn -f /home/app/pom.xml clean package
+
 FROM gcr.io/distroless/java17-debian11
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} app.jar
+ARG version
+EXPOSE 8080
+COPY --from=build /home/app/target/demo-${version}.jar /app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]
