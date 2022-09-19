@@ -34,7 +34,6 @@ class DemoControllerTest {
         List<Integer> result = controller.addNumber(100);
         List<Integer> expect = new ArrayList<>();
         expect.add(100);
-        expect.add(1);
         assertEquals(expect, result);
     }
 
